@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+　<meta charset="utf8">
+　<meta name="viewport" content="width=device-width,initial-scale=1">
+　<title>Share Target Picker Sample</title>
+</head>
+
+<body>
+　<h1>Share Target Picker</h1>
+　<button id="send">Share Target Picker</button>
+　<p id="success"></p>
+　<p id="error"></p>
+　<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+　　　:
+　　　: 
+<script>
+  liff.init(
+ {
+  liffId: '1656789802-DyP27AwV'
+ }
+).then(() => {
+ if (!liff.isLoggedIn()) {
+  liff.login();
+ }
+ document.getElementById('send').addEventListener('click', send);
+}).catch((error) => {
+ document.getElementById('error').innerText = 'Error from LIFF: ' + error;
+});
+
+function send() {
+ liff.shareTargetPicker([{
+  'type': 'text',
+  'text': 'Hello, World! from SHare Target Picker App...'
+ }]).then(
+  document.getElementById('success').innerText = 'Launched Share Target Picker'
+ ).catch((error) => {
+  document.getElementById('error').innerText = 'Error from Share Target Picker: ' + error;
+ })
+}
+</script>
+</body>
+</html>

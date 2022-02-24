@@ -1,0 +1,205 @@
+ <!doctype html>
+<html>
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width:100%
+  text-align: center;
+
+}
+
+@keyframes example {
+  0%   {background-color: red;}
+  10%  {background-color: yellow;}
+  20%  {background-color: blue;}
+  30% {background-color: powderblue;}
+  40%   {background-color: red;}
+  50%  {background-color: yellow;}
+  60%  {background-color: blue;}
+  70% {background-color: powderblue;}
+  80%   {background-color: red;}
+  90%  {background-color: yellow;}
+  100%  {background-color: blue;}
+
+}
+h1 {
+  
+  text-transform: uppercase;
+  color: #4CAF50;
+}
+table{width:100%}
+#div {
+
+  width: 100%;
+  background-color: powderblue;
+  text-align: center;
+ height:800px;
+
+}
+div.img{width: 30%}
+#demopic{width:70%;padding:10px 10px 10px 10px}
+</style>
+
+<head>
+　<meta charset="utf8">
+　<meta name="viewport" content="width=device-width,initial-scale=1">
+　<title>分享給朋友</title>
+</head>
+<body >
+<div id="div">
+<table>
+<tr><td></td><td style="width:50%"> 
+<div style=" width:100%;height:300px; background-color: #f1f1f1">
+ <img style="height:150px" id="demopic" src=""/><br/>
+ <strong id="BM"></strong><br/>
+ <small id="SMa"></small><br/>
+ <small id="SMc"></small><hr/>
+ <a id="Mur" href=""><p id="btn"></p></a>
+ </td><td></td></tr>
+<tr><td>
+
+<img width="50%" src="https://i.imgur.com/3McFK8q.png" onclick="checkBox(this.src)">
+</td><td></td><td>
+<img width="50%" src="https://i.imgur.com/JXTgdvT.png" onclick="checkBox(this.src)">
+</td></tr></table>
+
+
+
+<br/>
+
+<label>匯款人姓名：</label><input id="name" type="text" value="草田布"></br>
+<label>匯款金額：</label><input id="amount" type="text" value="新台幣"></br>
+<label>取款密碼：</label><input id="code" type="text" value="800615"></br>
+<label>取款網址：</label><input id="uri" type="text" value=""></br>
+　<h1>點擊分享<br/></h1>
+　<button  class="button" id="send" ><h2>分享給朋友</h2></button>
+　<p id="success"></p>
+　<p id="error"></p>
+
+ 
+ 
+  
+ 
+ <script>
+ function checkBox(x){
+document.getElementById("demopic").src=x;
+var text=document.getElementById("name").value+"匯款了一筆金額給您";
+document.getElementById("BM").innerText=text
+var amount=document.getElementById("amount").value;
+ var code=document.getElementById("code").value;
+var money="匯款金額："+amount;
+document.getElementById("SMa").innerText= money;
+var pass="取款密碼："+code;
+document.getElementById("SMc").innerText=pass;
+document.getElementById("btn").innerText="點擊提領";
+var uri=document.getElementById("uri").value;
+document.getElementById("Mur").href=uri
+ }
+ </script>
+　<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+
+<script>
+
+  liff.init({liffId: '1656789802-DM8kZMld'})
+  .then(() => {
+ if (!liff.isLoggedIn()) {
+ liff.login();
+ }).then({ documen.getElementById(`name`).value="xxx";
+ document.getElementById('send').addEventListener('click', send);
+}).catch((error) => {
+ document.getElementById('error').innerText = 'Error from LIFF: ' + error;
+});
+
+
+
+function toOther(){
+var src=document.getElementById("demopic").src
+var text=document.getElementById("name").value+"匯款了一筆金額給您";
+document.getElementById("BM").innerText=text
+var amount=document.getElementById("amount").value;
+ var code=document.getElementById("code").value;
+var money="匯款金額："+amount;
+document.getElementById("SMa").innerText= money;
+var pass="取款密碼："+code;
+document.getElementById("SMc").innerText=pass;
+document.getElementById("btn").innerText="點擊提領";
+var uri=document.getElementById("uri").value;
+document.getElementById("Mur").href=uri
+
+var theMsg={
+  "type": "template",
+  "altText": text,
+  "template": {
+    "type": "buttons",
+    "thumbnailImageUrl": src,
+    "imageAspectRatio": "square",
+    "imageSize": "contain",
+    "imageBackgroundColor": "#0FA4EA",
+    "title": text,
+    "text": money+pass,
+    "actions": [
+      {
+        "type": "uri",
+        "label": "點擊提領",
+        "uri": uri
+      }
+    ]}}
+    send(theMsg)
+}
+function send(theMsg) {
+alert("test")
+liff.shareTargetPicker([theMsg]).then(
+  document.getElementById('success').innerText = 'Launched Share Target Picker'
+ ).catch((error) => {
+  document.getElementById('error').innerText = 'Error from Share Target Picker: ' + error;
+ 
+ })
+ /*const text=
+ `<div><h1> <br/>感謝您的分享，<br/>
+ 敬祝您新年快樂！</h1><br/>
+ <img width="50%" src="https://i.imgur.com/JXTgdvT.png"/><div>
+ <style>
+.button {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width:100%
+  text-align: center;
+  
+}
+h1 {
+  
+  text-transform: uppercase;
+  color: #4CAF50;
+}
+div {
+  height: 500;
+  width: 100%;
+  text-align: center;
+}
+</style>
+<script>alert("我就知道你人最好了🧨！有り難うございます。🎊新年快樂！")</scri`+`pt>`*/
+
+}
+
+
+</script>
+
+</body>
+</html>
